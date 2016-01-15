@@ -79,6 +79,9 @@ Line #2 following a blank line
 
 The word `monospace` should render as in-line code.  
 
+The following in-line code should text wrap, and not create a horizontal scroll bar within Mattermost:  
+`testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown testing long in-line code markdown`
+
 The following markdown in-line code should not render:  
 `_Italics_`, `*Italics*`, `**Bold**`, `***Bold-italics***`, `**Bold-italics_**`, `~~Strikethrough~~`, `:)` , `:-)` , `;)` , `:-O` , `:bamboo:` , `:gift_heart:` , `:dolls:` , `# Heading 1`, `## Heading 2`, `### Heading 3`, `#### Heading 4`, `##### Heading 5`, `###### Heading 6`
 
