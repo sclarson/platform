@@ -1,6 +1,7 @@
 // Copyright (c) 2015 Mattermost, Inc. All Rights Reserved.
 // See License.txt for license information.
 
+import * as Client from '../utils/client.jsx';
 import Login from '../components/login.jsx';
 import {addLocaleData, IntlProvider} from 'react-intl';
 import enLocaleData from '../utils/locales/en';
@@ -9,23 +10,63 @@ import esLocaleData from '../utils/locales/es';
 addLocaleData(enLocaleData);
 addLocaleData(esLocaleData);
 
-function setupLoginPage(props) {
-    const lang = props.Locale;
-    const messages = JSON.parse(props.Messages);
+class Root extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            translations: null,
+            loaded: false
+        };
+    }
 
-    ReactDOM.render(
-        <IntlProvider
-            locale={lang}
-            messages={messages}
-        >
-            <Login
-                teamDisplayName={props.TeamDisplayName}
-                teamName={props.TeamName}
-                inviteId={props.InviteId}
-            />
-        </IntlProvider>,
-        document.getElementById('login')
-    );
+    static propTypes() {
+        return {
+            map: React.PropTypes.object.isRequired
+        };
+    }
+
+    componentWillMount() {
+        Client.getTranslations(
+            this.props.map.Locale,
+            (data) => {
+                this.setState({
+                    translations: data,
+                    loaded: true
+                });
+            },
+            () => {
+                this.setState({
+                    loaded: true
+                });
+            }
+        );
+    }
+
+    render() {
+        let children;
+
+        if (this.state.loaded) {
+            children = (
+                <IntlProvider
+                    locale={this.props.map.Locale}
+                    messages={this.state.translations}
+                >
+                    <Login
+                        teamDisplayName={this.props.map.TeamDisplayName}
+                        teamName={this.props.map.TeamName}
+                        inviteId={this.props.map.InviteId}
+                    />
+                </IntlProvider>
+            );
+        }
+
+        return <div>{children}</div>;
+    }
 }
 
-global.window.setup_login_page = setupLoginPage;
+global.window.setup_login_page = function setup(props) {
+    ReactDOM.render(
+        <Root map={props} />,
+        document.getElementById('login')
+    );
+};
