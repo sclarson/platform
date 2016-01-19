@@ -43,22 +43,22 @@ class Root extends React.Component {
     }
 
     render() {
-        if (this.state.loaded) {
-            return (
-                <IntlProvider
-                    locale={this.props.map.Locale}
-                    messages={this.state.translations}
-                >
-                    <Login
-                        teamDisplayName={this.props.map.TeamDisplayName}
-                        teamName={this.props.map.TeamName}
-                        inviteId={this.props.map.InviteId}
-                    />
-                </IntlProvider>
-            );
+        if (!this.state.loaded) {
+            return <div></div>;
         }
 
-        return <div></div>;
+        return (
+            <IntlProvider
+                locale={this.props.map.Locale}
+                messages={this.state.translations}
+            >
+                <Login
+                    teamDisplayName={this.props.map.TeamDisplayName}
+                    teamName={this.props.map.TeamName}
+                    inviteId={this.props.map.InviteId}
+                />
+            </IntlProvider>
+        );
     }
 }
 
