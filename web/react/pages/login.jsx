@@ -43,10 +43,8 @@ class Root extends React.Component {
     }
 
     render() {
-        let children;
-
         if (this.state.loaded) {
-            children = (
+            return (
                 <IntlProvider
                     locale={this.props.map.Locale}
                     messages={this.state.translations}
@@ -60,7 +58,7 @@ class Root extends React.Component {
             );
         }
 
-        return <div>{children}</div>;
+        return <div></div>;
     }
 }
 
