@@ -589,7 +589,7 @@ export function signupTeam(email, success, error) {
         data: JSON.stringify({email: email}),
         success,
         error: function onError(xhr, status, err) {
-            var e = handleError('singupTeam', xhr, status, err);
+            var e = handleError('signupTeam', xhr, status, err);
             error(e);
         }
     });

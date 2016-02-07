@@ -177,8 +177,8 @@ func root(c *api.Context, w http.ResponseWriter, r *http.Request) {
 	}
 
 	if len(c.Session.UserId) == 0 {
-		page := NewHtmlTemplatePage("signup_team", c.T("web.root.singup_title"), c.Locale)
-		page.Props["Info"] = c.T("web.root.singup_info")
+		page := NewHtmlTemplatePage("signup_team", c.T("web.root.signup_title"), c.Locale)
+		page.Props["Info"] = c.T("web.root.signup_info")
 
 		if result := <-api.Srv.Store.Team().GetAllTeamListing(); result.Err != nil {
 			c.Err = result.Err
@@ -230,7 +230,7 @@ func signup(c *api.Context, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	page := NewHtmlTemplatePage("signup_team", c.T("web.root.singup_title"), c.Locale)
+	page := NewHtmlTemplatePage("signup_team", c.T("web.root.signup_title"), c.Locale)
 	page.Render(c, w)
 }
 
@@ -685,13 +685,13 @@ func signupWithOAuth(c *api.Context, w http.ResponseWriter, r *http.Request) {
 	teamName := params["team"]
 
 	if !utils.Cfg.TeamSettings.EnableUserCreation {
-		c.Err = model.NewLocAppError("signupTeam", "web.singup_with_oauth.disabled.app_error", nil, "")
+		c.Err = model.NewLocAppError("signupTeam", "web.signup_with_oauth.disabled.app_error", nil, "")
 		c.Err.StatusCode = http.StatusNotImplemented
 		return
 	}
 
 	if len(teamName) == 0 {
-		c.Err = model.NewLocAppError("signupWithOAuth", "web.singup_with_oauth.invalid_team.app_error", nil, "team_name="+teamName)
+		c.Err = model.NewLocAppError("signupWithOAuth", "web.signup_with_oauth.invalid_team.app_error", nil, "team_name="+teamName)
 		c.Err.StatusCode = http.StatusBadRequest
 		return
 	}
@@ -711,18 +711,18 @@ func signupWithOAuth(c *api.Context, w http.ResponseWriter, r *http.Request) {
 		props := model.MapFromJson(strings.NewReader(data))
 
 		if !model.ComparePassword(hash, fmt.Sprintf("%v:%v", data, utils.Cfg.EmailSettings.InviteSalt)) {
-			c.Err = model.NewLocAppError("signupWithOAuth", "web.singup_with_oauth.invalid_link.app_error", nil, "")
+			c.Err = model.NewLocAppError("signupWithOAuth", "web.signup_with_oauth.invalid_link.app_error", nil, "")
 			return
 		}
 
 		t, err := strconv.ParseInt(props["time"], 10, 64)
 		if err != nil || model.GetMillis()-t > 1000*60*60*48 { // 48 hours
-			c.Err = model.NewLocAppError("signupWithOAuth", "web.singup_with_oauth.expired_link.app_error", nil, "")
+			c.Err = model.NewLocAppError("signupWithOAuth", "web.signup_with_oauth.expired_link.app_error", nil, "")
 			return
 		}
 
 		if team.Id != props["id"] {
-			c.Err = model.NewLocAppError("signupWithOAuth", "web.singup_with_oauth.invalid_team.app_error", nil, data)
+			c.Err = model.NewLocAppError("signupWithOAuth", "web.signup_with_oauth.invalid_team.app_error", nil, data)
 			return
 		}
 	}

@@ -3500,11 +3500,11 @@
     "translation": "Home"
   },
   {
-    "id": "web.root.singup_info",
+    "id": "web.root.signup_info",
     "translation": "All team communication in one place, searchable and accessible anywhere"
   },
   {
-    "id": "web.root.singup_title",
+    "id": "web.root.signup_title",
     "translation": "Signup"
   },
   {
@@ -3540,19 +3540,19 @@
     "translation": "Complete User Sign Up"
   },
   {
-    "id": "web.singup_with_oauth.disabled.app_error",
+    "id": "web.signup_with_oauth.disabled.app_error",
     "translation": "User sign-up is disabled."
   },
   {
-    "id": "web.singup_with_oauth.expired_link.app_error",
+    "id": "web.signup_with_oauth.expired_link.app_error",
     "translation": "The signup link has expired"
   },
   {
-    "id": "web.singup_with_oauth.invalid_link.app_error",
+    "id": "web.signup_with_oauth.invalid_link.app_error",
     "translation": "The signup link does not appear to be valid"
   },
   {
-    "id": "web.singup_with_oauth.invalid_team.app_error",
+    "id": "web.signup_with_oauth.invalid_team.app_error",
     "translation": "Invalid team name"
   },
   {

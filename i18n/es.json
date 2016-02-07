@@ -3500,11 +3500,11 @@
     "translation": "Inicio"
   },
   {
-    "id": "web.root.singup_info",
+    "id": "web.root.signup_info",
     "translation": "Todas las comunicaciones del equipo en un sólo lugar, con búsquedas y accesible desde cualquier parte"
   },
   {
-    "id": "web.root.singup_title",
+    "id": "web.root.signup_title",
     "translation": "Registrar"
   },
   {
@@ -3540,19 +3540,19 @@
     "translation": "Registro de usuario completado"
   },
   {
-    "id": "web.singup_with_oauth.disabled.app_error",
+    "id": "web.signup_with_oauth.disabled.app_error",
     "translation": "El registro de usuario está deshabilitado."
   },
   {
-    "id": "web.singup_with_oauth.expired_link.app_error",
+    "id": "web.signup_with_oauth.expired_link.app_error",
     "translation": "El enlace de registro ha expirado"
   },
   {
-    "id": "web.singup_with_oauth.invalid_link.app_error",
+    "id": "web.signup_with_oauth.invalid_link.app_error",
     "translation": "El enlace de registro parece ser inválido"
   },
   {
-    "id": "web.singup_with_oauth.invalid_team.app_error",
+    "id": "web.signup_with_oauth.invalid_team.app_error",
     "translation": "Nombre del equipo inválido"
   },
   {
